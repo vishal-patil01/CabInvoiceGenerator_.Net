@@ -51,14 +51,26 @@ namespace CabInvoiceGeneratorTest
         }
 
         /// <summary>
-        /// Test to get total fare for Multiple Rides.
+        /// Test Get Total Fare For Multiple Rides.
         /// </summary>
         [Test]
         public void GivenDistanceAndTimeForMultipleRides_WhenProper_ShouldReturnAggregateFare()
         {
             Rides[] ride = { new Rides(3.0, 5.0), new Rides(2.0, 5.0) };
-            double aggregateFare = this.cabInvoiceGenerator.GetMultipleRideFare(ride);
-            Assert.AreEqual(30.0, aggregateFare);
+            InvoiceSummary invoiceSummary = this.cabInvoiceGenerator.CalculateFare(ride);
+            Assert.AreEqual(30.0, invoiceSummary.AverageFarePerRide);
+        }
+
+        /// <summary>
+        /// Test To Get Enhanced Invoice Summary.
+        /// </summary>
+        [Test]
+        public void GivenDistanceAndTimeForMultipleRides_WhenProper_ShouldReturnInvoiceSummary()
+        {
+            Rides[] rides = { new Rides(25.12, 40), new Rides(12.39, 25) };
+            InvoiceSummary invoiceSummary = this.cabInvoiceGenerator.CalculateFare(rides);
+            InvoiceSummary summary = new InvoiceSummary(2, 440.1);
+            Assert.AreEqual(summary, invoiceSummary);
         }
     }
 }

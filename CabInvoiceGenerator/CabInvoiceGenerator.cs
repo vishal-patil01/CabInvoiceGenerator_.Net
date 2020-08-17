@@ -23,8 +23,7 @@ namespace CabInvoiceGenerator
         /// <returns>Total Fare.</returns>
         public double CalculateFare(double distance, double time)
         {
-            double totalFare = 0.0;
-            totalFare = (distance * CostPerKilometer) + (time * CostPerMinute);
+            double totalFare = (distance * CostPerKilometer) + (time * CostPerMinute);
             return Math.Max(totalFare, MinimumFare);
         }
 
@@ -33,7 +32,7 @@ namespace CabInvoiceGenerator
         /// </summary>
         /// <param name="rides">Array Of Ride Object.</param>
         /// <returns>Total Fare.</returns>
-        public double GetMultipleRideFare(Rides[] rides)
+        public InvoiceSummary CalculateFare(Rides[] rides)
         {
             double totalRideFare = 0.0;
             foreach (Rides ride in rides)
@@ -41,7 +40,7 @@ namespace CabInvoiceGenerator
                 totalRideFare += this.CalculateFare(ride.RideDistance, ride.RideTime);
             }
 
-            return totalRideFare / rides.Length;
+            return new InvoiceSummary(rides.Length, totalRideFare);
         }
     }
 }
