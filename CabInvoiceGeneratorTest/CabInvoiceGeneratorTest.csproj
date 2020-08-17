@@ -16,4 +16,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CabInvoiceGenerator\CabInvoiceGenerator.csproj" />
+  </ItemGroup>
+
 </Project>
