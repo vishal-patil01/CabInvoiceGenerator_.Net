@@ -26,17 +26,17 @@ namespace CabInvoiceGenerator
         /// <summary>
         /// Gets or sets total Number Of Rides.
         /// </summary>
-        public int NumberOfRides { get; set; }
+        public int NumberOfRides;
 
         /// <summary>
         /// Gets or sets total Cost.
         /// </summary>
-        public double TotalFare { get; set; }
+        public double TotalFare;
 
         /// <summary>
-        /// Gets or sets average Cost For Multiple Ride.
+        /// average Cost For Multiple Ride.
         /// </summary>
-        public double AverageFarePerRide { get; set; }
+        public double AverageFarePerRide;
 
         /// <summary>
         /// Override equals method.

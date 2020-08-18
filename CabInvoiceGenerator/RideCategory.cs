@@ -38,19 +38,19 @@ namespace CabInvoiceGenerator
         }
 
         /// <summary>
-        /// Gets or sets cost Required For Per Kilometer.
+        /// cost Required For Per Kilometer.
         /// </summary>
-        public double CostPerKilometer { get; set; }
+        public double CostPerKilometer;
 
         /// <summary>
-        /// Gets or sets cost Required For Per Minutes.
+        ///  cost Required For Per Minutes.
         /// </summary>
-        public double CostPerMinute { get; set; }
+        public double CostPerMinute;
 
         /// <summary>
-        /// Gets or sets minimum Cost Required For Ride.
+        ///  minimum Cost Required For Ride.
         /// </summary>
-        public double MinimumFare { get; set; }
+        public double MinimumFare;
 
         /// <summary>
         /// Function To Get Total Fare Of Cab Ride Based On Ride Category.

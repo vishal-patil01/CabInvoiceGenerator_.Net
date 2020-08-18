@@ -23,18 +23,18 @@ namespace CabInvoiceGenerator
         }
 
         /// <summary>
-        /// Gets or sets store Ride Distance.
+        ///  store Ride Distance.
         /// </summary>
-        public double RideDistance { get; set; }
+        public double RideDistance;
 
         /// <summary>
-        /// Gets or sets store Ride Time.
+        /// store Ride Time.
         /// </summary>
-        public double RideTime { get; set; }
+        public double RideTime;
 
         /// <summary>
-        /// Gets or sets instance Variable Of Ride Category.
+        /// instance Variable Of Ride Category.
         /// </summary>
-        public RideCategory Category { get; set; }
+        public RideCategory Category;
     }
 }

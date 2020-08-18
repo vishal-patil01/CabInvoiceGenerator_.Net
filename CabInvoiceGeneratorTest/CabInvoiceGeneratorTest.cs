@@ -43,17 +43,17 @@ namespace CabInvoiceGeneratorTest
         private readonly double thirdRideDistance = 0.2;
 
         /// <summary>
-        /// Instance Variable Of <see cref="CabInvoiceGenerator"/> Class.
+        /// Instance Variable Of <see cref="CabInvoiceService"/> Class.
         /// </summary>
-        private CabInvoiceGenerator cabInvoiceGenerator;
+        private CabInvoiceService cabInvoiceGenerator;
 
         /// <summary>
-        /// Setup Method For Initializing Instance of <see cref="CabInvoiceGenerator"/> Class for Test Methods.
+        /// Setup Method For Initializing Instance of <see cref="CabInvoiceService"/> Class for Test Methods.
         /// </summary>
         [SetUp]
         public void Setup()
         {
-            this.cabInvoiceGenerator = new CabInvoiceGenerator();
+            this.cabInvoiceGenerator = new CabInvoiceService();
         }
 
         /// <summary>
@@ -107,12 +107,24 @@ namespace CabInvoiceGeneratorTest
         [Test]
         public void GivenUserIdAndRides_ShouldReturnUserInvoiceSummary()
         {
-            string userId = "vish@xyz.com";
+            string userId = "vish123@xyz.com";
             Rides[] rides = { new Rides(this.firstRideDistance, this.firstRideTime, RideCategory.Normal), new Rides(this.secondRideDistance, this.secondRideTime, RideCategory.Normal) };
             this.cabInvoiceGenerator.AddRideForUser(userId, rides);
             InvoiceSummary actualInvoiceSummary = this.cabInvoiceGenerator.GetInvoiceSummary(userId);
             InvoiceSummary exceptedInvoiceSummary = new InvoiceSummary(rides.Length, 365);
             Assert.AreEqual(exceptedInvoiceSummary, actualInvoiceSummary);
+        }
+
+        /// <summary>
+        /// Test To Check UserId is Valid Or Not.
+        /// </summary>
+        [Test]
+        public void GivenUserIdAndRides_WhenUserIdIsNotValid_ShouldThrowCabInvoiceException()
+        {
+            string userId = "abc";
+            Rides[] rides = { new Rides(this.firstRideDistance, this.firstRideTime, RideCategory.Normal), new Rides(this.secondRideDistance, this.secondRideTime, RideCategory.Normal) };
+            var error = Assert.Throws<CabInvoiceException>(() => this.cabInvoiceGenerator.AddRideForUser(userId, rides));
+            Assert.AreEqual(CabInvoiceException.CabInvoiceExceptionType.INVALID_USERID, error.ExceptionType);
         }
 
         /// <summary>

@@ -33,7 +33,13 @@ namespace CabInvoiceGenerator
         {
             bool isUserIdExists = this.userRides.ContainsKey(userId);
 
-            if (isUserIdExists == false)
+            if (isUserIdExists)
+            {
+                List<Rides> lists = this.userRides[userId];
+                lists.AddRange(rides);
+                this.userRides[userId] = lists;
+            }
+            else
             {
                 this.userRides.Add(userId, new List<Rides>(rides));
             }
