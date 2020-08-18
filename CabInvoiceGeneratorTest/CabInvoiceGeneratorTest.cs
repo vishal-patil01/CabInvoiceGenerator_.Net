@@ -67,10 +67,24 @@ namespace CabInvoiceGeneratorTest
         [Test]
         public void GivenDistanceAndTimeForMultipleRides_WhenProper_ShouldReturnInvoiceSummary()
         {
-            Rides[] rides = { new Rides(25.12, 40), new Rides(12.39, 25) };
+            Rides[] rides = { new Rides(20.0, 10.0), new Rides(15, 5), new Rides(10, 3) };
             InvoiceSummary invoiceSummary = this.cabInvoiceGenerator.CalculateFare(rides);
-            InvoiceSummary summary = new InvoiceSummary(2, 440.1);
+            InvoiceSummary summary = new InvoiceSummary(3, 468);
             Assert.AreEqual(summary, invoiceSummary);
+        }
+
+        /// <summary>
+        /// Test method to check invoice summary of particular user.
+        /// </summary>
+        [Test]
+        public void GivenUserIdAndRides_ShouldReturnUserInvoiceSummary()
+        {
+            string userId = "vish1";
+            Rides[] rides = { new Rides(20.0, 10.0), new Rides(15, 5), new Rides(10, 3) };
+            this.cabInvoiceGenerator.AddRideForUser(userId, rides);
+            InvoiceSummary invoiceSummary = this.cabInvoiceGenerator.GetInvoiceSummary(userId);
+            InvoiceSummary summary = new InvoiceSummary(3, 468);
+            Assert.AreEqual(invoiceSummary, summary);
         }
     }
 }
