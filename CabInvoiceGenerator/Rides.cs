@@ -10,24 +10,31 @@ namespace CabInvoiceGenerator
     public class Rides
     {
         /// <summary>
-        /// store Ride Distance.
-        /// </summary>
-        public double RideDistance;
-
-        /// <summary>
-        /// store Ride Time.
-        /// </summary>
-        public double RideTime;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="Rides"/> class.
         /// </summary>
         /// <param name="rideDistance">Total Ride Distance.</param>
         /// <param name="rideTime">Total Ride Time.</param>
-        public Rides(double rideDistance, double rideTime)
+        /// <param name="rideCategory">Ride Category.</param>
+        public Rides(double rideDistance, double rideTime, RideCategory rideCategory)
         {
             this.RideDistance = rideDistance;
             this.RideTime = rideTime;
+            this.Category = rideCategory;
         }
+
+        /// <summary>
+        /// Gets or sets store Ride Distance.
+        /// </summary>
+        public double RideDistance { get; set; }
+
+        /// <summary>
+        /// Gets or sets store Ride Time.
+        /// </summary>
+        public double RideTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets instance Variable Of Ride Category.
+        /// </summary>
+        public RideCategory Category { get; set; }
     }
 }

@@ -13,7 +13,10 @@ namespace CabInvoiceGenerator
     /// </summary>
     public class RideRepository
     {
-        private Dictionary<string, List<Rides>> userRides;
+        /// <summary>
+        /// Dictionary To Store Ride Details With UserId.
+        /// </summary>
+        private readonly Dictionary<string, List<Rides>> userRides;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RideRepository"/> class.

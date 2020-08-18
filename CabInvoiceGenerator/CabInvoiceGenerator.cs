@@ -11,9 +11,6 @@ namespace CabInvoiceGenerator
     /// </summary>
     public class CabInvoiceGenerator
     {
-        private static readonly double CostPerKilometer = 10.0;
-        private static readonly double CostPerMinute = 1.0;
-        private static readonly double MinimumFare = 5.0;
         private readonly RideRepository rideRepository;
 
         /// <summary>
@@ -21,18 +18,6 @@ namespace CabInvoiceGenerator
         /// Initializes a new instance of the <see cref="RideRepository"/> class.
         /// </summary>
         public CabInvoiceGenerator() => this.rideRepository = new RideRepository();
-
-        /// <summary>
-        /// Function to Calculate Total Fare.
-        /// </summary>
-        /// <param name="distance">Total Distance.</param>
-        /// <param name="time">Total Time.</param>
-        /// <returns>Total Fare.</returns>
-        public double CalculateFare(double distance, double time)
-        {
-            double totalFare = (distance * CostPerKilometer) + (time * CostPerMinute);
-            return Math.Max(totalFare, MinimumFare);
-        }
 
         /// <summary>
         ///  Function to Calculate Total Fare For Multiple Ride.
@@ -44,7 +29,7 @@ namespace CabInvoiceGenerator
             double totalRideFare = 0.0;
             foreach (Rides ride in rides)
             {
-                totalRideFare += this.CalculateFare(ride.RideDistance, ride.RideTime);
+                totalRideFare += ride.Category.CalculateCategoryWiseFare(ride);
             }
 
             return new InvoiceSummary(rides.Length, totalRideFare);

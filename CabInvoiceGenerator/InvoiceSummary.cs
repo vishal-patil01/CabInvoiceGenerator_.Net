@@ -7,14 +7,10 @@ namespace CabInvoiceGenerator
     using System;
 
     /// <summary>
-    /// Class To Generate Proper Invoice Summary. 
+    /// Class To Generate Proper Invoice Summary.
     /// </summary>
     public class InvoiceSummary
     {
-        public int NumberOfRides;
-        public double TotalFare;
-        public double AverageFarePerRide;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="InvoiceSummary"/> class.
         /// </summary>
@@ -26,6 +22,21 @@ namespace CabInvoiceGenerator
             this.TotalFare = totalFare;
             this.AverageFarePerRide = this.TotalFare / this.NumberOfRides;
         }
+
+        /// <summary>
+        /// Gets or sets total Number Of Rides.
+        /// </summary>
+        public int NumberOfRides { get; set; }
+
+        /// <summary>
+        /// Gets or sets total Cost.
+        /// </summary>
+        public double TotalFare { get; set; }
+
+        /// <summary>
+        /// Gets or sets average Cost For Multiple Ride.
+        /// </summary>
+        public double AverageFarePerRide { get; set; }
 
         /// <summary>
         /// Override equals method.
@@ -41,9 +52,9 @@ namespace CabInvoiceGenerator
         }
 
         /// <summary>
-        /// Override HashCode Method
+        /// Override HashCode Method.
         /// </summary>
-        /// <returns>Return Hash Code Value</returns>
+        /// <returns>Return Hash Code Value.</returns>
         public override int GetHashCode()
         {
             return HashCode.Combine(this.NumberOfRides, this.TotalFare, this.AverageFarePerRide);
